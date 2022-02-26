@@ -7,7 +7,7 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./form-demo.component.css']
 })
 export class FormDemoComponent implements OnInit {
-  productTypes = ['Laptop', 'Mobile'];
+  productTypes = ['Laptop', 'Mobile','Television','HeadPhone'];
   myForm: FormGroup | any;
   title: FormControl | any;
   modelName: FormControl | any;
