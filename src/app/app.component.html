@@ -1,10 +1,10 @@
 <div class="container">
   <h1 class="heading"><strong>Services </strong>Demo</h1>
 
-  <button type="button" (click)="getProducts()">View Policies</button>
+  <button type="button" (click)="getPolicies()">View Policies</button>
   <hr>
     <!--ngStyle-->
-   Choose Theme Color:<input [(ngModel)]="color" /> 
+   <div>Choose Theme Color:</div><input [(ngModel)]="color" /> 
    <div class='table-responsive'>
           <table class='table'>
               <thead>
@@ -15,10 +15,12 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let product of products;">
-                      <td>{{product.productID}}</td>
-                      <td>{{product.name}}</td>
-                      <td>{{product.price}}</td>
+                  <!--*ngFor Directive - Looping through the policies-->
+                  <!--policies is the array holding all the polcies accessed from the PolicyService-->
+                  <tr *ngFor="let policy of policies;">
+                      <td>{{policy.policyID}}</td>
+                      <td>{{policy.policyname}}</td>
+                      <td>{{policy.policyrate}}</td>
                   </tr>
               </tbody>
           </table>
