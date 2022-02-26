@@ -22,5 +22,7 @@ export class AppComponent
      
      this.products=this.productService.getProducts();
    }
+    //ngStyle
+  color: string = 'red';
   
 }

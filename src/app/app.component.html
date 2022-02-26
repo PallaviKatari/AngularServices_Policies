@@ -2,14 +2,16 @@
   <h1 class="heading"><strong>Services </strong>Demo</h1>
 
   <button type="button" (click)="getProducts()">View Policies</button>
-
+  <hr>
+    <!--ngStyle-->
+   Choose Theme Color:<input [(ngModel)]="color" /> 
    <div class='table-responsive'>
           <table class='table'>
               <thead>
                   <tr>
-                      <th>Policy_ID</th>
-                      <th>Policy_Name</th>
-                      <th>Policy_Plan(yearly)</th>
+                      <th [ngStyle]="{'color': color}">Policy_ID</th>
+                      <th [ngStyle]="{'color': color}">Policy_Name</th>
+                      <th [ngStyle]="{'color': color}">Policy_Plan(yearly)</th>
                   </tr>
               </thead>
               <tbody>
