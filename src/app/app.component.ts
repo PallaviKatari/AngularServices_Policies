@@ -19,8 +19,8 @@ export class AppComponent
      //creating an instance for the PolicyService class to access getPolicies()
      this.policyService=new PolicyService();
    }
-   //creating a function in app.component to access the getPolicies() from PolicyService
-   getPolicies()
+   //creating a function getPolicyDetails() in app.component to access the getPolicies() from PolicyService
+   getPolicyDetails()
   {
      //accessing the getpolicies() method from policyService class
      //and store it in the array policies

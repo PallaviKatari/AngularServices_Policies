@@ -5,8 +5,8 @@ import {Policy} from './policy'
   providedIn: 'root'
 })
 export class PolicyService {
-
-  public  getPolicies() 
+//method
+  public getPolicies() 
   {
  
     let policies:Policy[]; //array
@@ -18,6 +18,7 @@ export class PolicyService {
         new Policy(3,'Term Insurance_Child',10000),
         new Policy(4,'Term Insurance_Coronavirus',10000),
         new Policy(5,'Term Insurance_LifeInsurance',40000),
+        new Policy(6,'Term Insurance_Vehicle',35000)
     ]
 
     return policies;               
