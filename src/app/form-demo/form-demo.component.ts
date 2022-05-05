@@ -7,6 +7,45 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./form-demo.component.css']
 })
 export class FormDemoComponent implements OnInit {
+  paymentHandler: any = null;
+  constructor() {}
+  
+  //makePayment(amount: any) {
+    makePayment() {
+   const paymentHandler = (<any>window).StripeCheckout.configure({
+     key: 'test_6oE5mm0g0eu34kodQS',
+     locale: 'auto',
+     token: function (stripeToken: any) {
+       console.log(stripeToken);
+       alert('Stripe token generated!');
+     },
+   });
+   paymentHandler.open({
+     name: 'DELL',
+     description: 'LAPTOP',
+     //amount: amount ,
+   });
+ }
+ 
+ invokeStripe() {
+   if (!window.document.getElementById('stripe-script')) {
+     const script = window.document.createElement('script');
+     script.id = 'stripe-script';
+     script.type = 'text/javascript';
+     script.src = 'https://checkout.stripe.com/checkout.js';
+     script.onload = () => {
+       this.paymentHandler = (<any>window).StripeCheckout.configure({
+         key: 'test_6oE5mm0g0eu34kodQS',
+         locale: 'auto',
+         token: function (stripeToken: any) {
+           console.log(stripeToken);
+           alert('Payment has been successfull!');
+         },
+       });
+     };
+     window.document.body.appendChild(script);
+   }
+ }
   productTypes = ['Laptop', 'Mobile','Television','HeadPhone'];
   myForm: FormGroup | any;
   title: FormControl | any;
@@ -15,8 +54,8 @@ export class FormDemoComponent implements OnInit {
   productType: FormControl | any;
   brand: FormControl | any;
   price: FormControl | any;
-  constructor() { }
   ngOnInit() {
+    this.invokeStripe();
     this.title = new FormControl('', [Validators.required, Validators.minLength(10)]);
     this.modelName = new FormControl();
     this.color = new FormControl('', Validators.pattern('[a-zA-Z]*'));
