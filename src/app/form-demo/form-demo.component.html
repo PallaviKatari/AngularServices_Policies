@@ -1,6 +1,6 @@
 <!--Validators are rules which an input control has to follow. 
     If the input doesn’t match the rule then the control is said to be invalid.
-Angular comes with the small set of prebuilt validators to match the once we can 
+Angular comes with the small set of prebuilt validators to match the ones we can 
 define via standard HTML 5 attributes, namely required, minlength, maxlength and 
 pattern which we can access from the Validators class in @angular/forms library.
 STEP 1:ng g c formdemo
@@ -40,12 +40,12 @@ By using visual feedback for the form controls when they are invalid.-->
               <label>Title</label>
               <!--is-invalid class makes control border color red, as well as it will show the invalid-feedback division.
                 is-valid class makes control border color green.-->
-              <input type="text" class="form-control" formControlName="title" [ngClass]="{'is-invalid': title.errors && (title.touched || title.dirty), 'is-valid':title.valid}"   >
+              <input type="text" class="form-control" placeholder="Enter the Title" formControlName="title" [ngClass]="{'is-invalid': title.errors && (title.touched || title.dirty), 'is-valid':title.valid}"   >
               <!--using visual feedback-->
               <div class="invalid-feedback" >
                   <!--*ngIf Directive-->
                 <strong *ngIf="title.errors?.required">Title is required</strong>
-                <strong *ngIf="title.errors?.minlength">Title length must be greater than {{title.errors?.minlength.requiredLength}} character. {{title.errors?.minlength.requiredLength - title.errors?.minlength.actualLength}} more character required. </strong>
+                <strong *ngIf="title.errors?.minlength">Title length must be greater than {{title.errors?.minlength.requiredLength}} characters. {{title.errors?.minlength.requiredLength - title.errors?.minlength.actualLength}} more characters required. </strong>
               </div>
             </div>
             <div class="form-group ">
@@ -71,7 +71,7 @@ By using visual feedback for the form controls when they are invalid.-->
             <div class="form-group">
               <label>Brand</label>
               <input type="text" class="form-control" formControlName="brand" [ngClass]="{'is-invalid': brand.errors && (brand.touched || brand.dirty), 'is-valid':brand.valid}">
-              <div class="alert alert-danger" role="alert">
+              <div class="invalid-feedback" >
                   <strong>Brand Name is required.</strong>    
               </div>
             </div>
@@ -83,8 +83,8 @@ By using visual feedback for the form controls when they are invalid.-->
                   <strong *ngIf="price.errors?.min"> Price should be greated than zero.</strong>    
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button class="btn btn-default" >Reset</button>
+            <button type="submit" class="btn btn-primary" (click)="makePayment()">Submit</button>
+            <button class="btn btn-default"><a href="https://buy.stripe.com/test_6oE5mm0g0eu34kodQS">BUY</a></button>
           </form>
         </div>
   
@@ -92,7 +92,7 @@ By using visual feedback for the form controls when they are invalid.-->
           <label>
             <strong>myForm : JSON</strong>
           </label>
-          <pre class="alert alert-dark">{{myForm.value | json}}</pre>
+          <pre class="alert alert-info">{{myForm.value | json}}</pre>
         </div>
       </div>  
     </div>
